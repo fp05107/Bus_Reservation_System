@@ -1,6 +1,7 @@
 package com.masai.model;
 
 import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -16,10 +17,11 @@ import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
+@Data
 @Getter
 @Setter
 @NoArgsConstructor
@@ -62,5 +64,46 @@ public class Route {
 	public int hashCode() {
 		return Objects.hash(distance, routeFrom, routeId, routeTo);
 	}
+
+	public Integer getRouteId() {
+		return routeId;
+	}
+
+	public void setRouteId(Integer routeId) {
+		this.routeId = routeId;
+	}
+
+	public String getRouteFrom() {
+		return routeFrom;
+	}
+
+	public void setRouteFrom(String routeFrom) {
+		this.routeFrom = routeFrom;
+	}
+
+	public String getRouteTo() {
+		return routeTo;
+	}
+
+	public void setRouteTo(String routeTo) {
+		this.routeTo = routeTo;
+	}
+
+	public Integer getDistance() {
+		return distance;
+	}
+
+	public void setDistance(Integer distance) {
+		this.distance = distance;
+	}
+
+	public List<Bus> getBusList() {
+		return busList;
+	}
+
+	public void setBusList(List<Bus> busList) {
+		this.busList = busList;
+	}
+	
 
 }
