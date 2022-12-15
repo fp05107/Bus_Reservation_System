@@ -28,6 +28,34 @@ public class GlobalExceptionHandler {
 		
 	}
 	
+	@ExceptionHandler(LoginException.class)
+	public ResponseEntity<MyErrorDetails> myAnyExpHandler(LoginException ie,WebRequest req){
+		
+		
+		MyErrorDetails err = new MyErrorDetails();
+		err.setTimestamp(LocalDateTime.now());
+		err.setMessage(ie.getMessage());
+		err.setDetails(req.getDescription(false));
+		
+		
+		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
+		
+	}
+	
+	@ExceptionHandler(UserException.class)
+	public ResponseEntity<MyErrorDetails> myAnyExpHandler(UserException ie,WebRequest req){
+		
+		
+		MyErrorDetails err = new MyErrorDetails();
+		err.setTimestamp(LocalDateTime.now());
+		err.setMessage(ie.getMessage());
+		err.setDetails(req.getDescription(false));
+		
+		
+		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.BAD_REQUEST);
+		
+	}
+	
 	
 	//to handle Not found exception 
 			@ExceptionHandler(NoHandlerFoundException.class)

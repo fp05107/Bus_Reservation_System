@@ -63,4 +63,44 @@ public class Route {
 		return Objects.hash(distance, routeFrom, routeId, routeTo);
 	}
 
+	public Integer getRouteId() {
+		return routeId;
+	}
+
+	public void setRouteId(Integer routeId) {
+		this.routeId = routeId;
+	}
+
+	public String getRouteFrom() {
+		return routeFrom;
+	}
+
+	public void setRouteFrom(String routeFrom) {
+		this.routeFrom = routeFrom;
+	}
+
+	public String getRouteTo() {
+		return routeTo;
+	}
+
+	public void setRouteTo(String routeTo) {
+		this.routeTo = routeTo;
+	}
+
+	public Integer getDistance() {
+		return distance;
+	}
+
+	public void setDistance(Integer distance) {
+		this.distance = distance;
+	}
+
+	public List<Bus> getBusList() {
+		return busList;
+	}
+
+	public void setBusList(List<Bus> busList) {
+		this.busList = busList;
+	}
+
 }
