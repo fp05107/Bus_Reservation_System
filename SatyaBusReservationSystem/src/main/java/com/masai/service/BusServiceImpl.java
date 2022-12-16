@@ -8,16 +8,17 @@ import javax.websocket.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.masai.exceptions.BusException;
-import com.masai.exceptions.LoginException;
-import com.masai.exceptions.RouteException;
+import com.masai.exception.BusException;
+import com.masai.exception.LoginException;
+//import com.masai.exception.RouteException;
 
 import com.masai.model.Bus;
 import com.masai.model.CurrentUserSession;
 import com.masai.model.Route;
 import com.masai.repository.BusRepo;
 import com.masai.repository.RouteDAO;
-import com.masai.repository.SessionRepo;
+import com.masai.repository.UserSessionDao;
+//import com.masai.repository.SessionRepo;
 
 @Service
 public class BusServiceImpl implements BusService {
@@ -25,18 +26,18 @@ public class BusServiceImpl implements BusService {
 	private static final String BusType = null;
 
 	@Autowired
-	private RouteRepo rRepo;
+	private RouteDAO rRepo;
 	
 	@Autowired
 	private BusRepo bRepo;
 	
 	@Autowired
-	private SessionRepo sr;
+	private UserSessionDao sr;
 	
 	@Override
 	public Bus addBus(Bus bus,String key)throws BusException,LoginException {
 		// TODO Auto-generated method stub
-		 CurrentUserSession validAdminSession = sr.findByUuid(key);
+		 CurrentUserSession validAdminSession = sr.findByUserUID(key);
 			
 			
 			if(validAdminSession == null) {
@@ -44,10 +45,12 @@ public class BusServiceImpl implements BusService {
 				
 			}
 			
-        Route route =rRepo.findByRouteFromAndRouteTo(bus.getRouteFrom(),bus.getRouteTo());
+//        Route route =rRepo.findByRouteFromAndRouteTo(bus.getRouteFrom(),bus.getRouteTo());
+		Route route = 	rRepo.findByRouteFromAndRouteTo(bus.getRouteTo(), bus.getRouteFrom());
         
         		if(route != null) {
-        			route.getBus().add(bus);
+//        			route.getBus().add(bus);
+        			route.getBusList().add(bus);
         			bus.setRoute(route);
         			return bRepo.save(bus);
         		}
@@ -59,7 +62,7 @@ public class BusServiceImpl implements BusService {
 	@Override
 	public Bus updateBus(Bus bus,String key)throws BusException,LoginException{
 		
-		CurrentUserSession validAdminSession = sr.findByUuid(key);
+		CurrentUserSession validAdminSession = sr.findByUserUID(key);
 		
 		
 		if(validAdminSession == null) {
@@ -90,7 +93,7 @@ public class BusServiceImpl implements BusService {
 	public Bus deleteBus(int busId,String key)throws BusException,LoginException{
 		// TODO Auto-generated method stub
 		
-CurrentUserSession validAdminSession = sr.findByUuid(key);
+CurrentUserSession validAdminSession = sr.findByUserUID(key);
 		
 		
 		if(validAdminSession == null) {

@@ -1,4 +1,4 @@
-package com.masai.dto;
+package com.masai.DTO;
 
 import java.time.LocalDate;
 
