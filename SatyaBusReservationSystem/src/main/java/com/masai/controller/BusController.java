@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.app.exceptions.BusException;
-import com.app.exceptions.LoginException;
-import com.app.model.Bus;
-import com.app.service.BusService;
+import com.masai.exceptions.BusException;
+import com.masai.exceptions.LoginException;
+import com.masai.model.Bus;
+import com.masai.service.BusService;
 
 @RestController
 public class BusController {
