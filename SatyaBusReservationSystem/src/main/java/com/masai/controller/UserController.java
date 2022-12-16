@@ -28,13 +28,51 @@ public class UserController {
 	private UserService userService;
 
 	@PostMapping("/users")
-	public ResponseEntity<User> saveUser( @Valid @RequestBody User user) throws UserException {
+	public ResponseEntity<User> saveUser(@Valid @RequestBody User user) throws UserException {
 
 		User savedUser = userService.createUser(user);
 
 		return new ResponseEntity<User>(savedUser, HttpStatus.CREATED);
 	}
 
-	
+	@PutMapping("/users")
+	public ResponseEntity<User> updateUser(@Valid @RequestBody User user, @RequestParam(required = false) String key)
+			throws UserException {
+
+		User updatedUser = userService.updateUser(user, key);
+
+		return new ResponseEntity<User>(updatedUser, HttpStatus.OK);
+
+	}
+
+	@DeleteMapping("/users/admin/{userId}")
+	public ResponseEntity<User> deleteUser(@PathVariable("userId") Integer userId,
+			@RequestParam(required = false) String key) throws UserException, AdminException {
+
+		User deletedUser = userService.deleteUser(userId, key);
+
+		return new ResponseEntity<User>(deletedUser, HttpStatus.OK);
+
+	}
+
+	@GetMapping("/users/admin/{userId}")
+	public ResponseEntity<User> viewUser(@PathVariable("userId") Integer userId,
+			@RequestParam(required = false) String key) throws UserException, AdminException {
+
+		User user = userService.viewUserById(userId, key);
+
+		return new ResponseEntity<User>(user, HttpStatus.OK);
+
+	}
+
+	@GetMapping("/users/admin")
+	public ResponseEntity<List<User>> viewAllUser(@RequestParam(required = false) String key)
+			throws UserException, AdminException {
+
+		List<User> userList = userService.viewUsers(key);
+
+		return new ResponseEntity<List<User>>(userList, HttpStatus.OK);
+
+	}
 
 }
