@@ -1,7 +1,9 @@
 package com.masai.controller;
 
 import com.masai.DTO.ReservationDTO;
+import com.masai.exception.AdminException;
 import com.masai.exception.ReservationException;
+import com.masai.exception.UserException;
 import com.masai.model.Reservation;
 import com.masai.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,35 +21,35 @@ public class ReservationController {
     private ReservationService reservationService;
 
     @PostMapping("/reservation/user")
-    public ResponseEntity<Reservation> addReservation(@Valid @RequestBody ReservationDTO reservationDTO, @RequestParam(required = false) String key) throws ReservationException, BusException, UserException {
+    public ResponseEntity<Reservation> addReservation(@Valid @RequestBody ReservationDTO reservationDTO, @RequestParam(required = false) String key) throws ReservationException, UserException, com.masai.exceptions.BusException {
         Reservation savedReservation = reservationService.addReservation(reservationDTO, key);
-        return new ResponseEntity<Reservation>(savedReservation, HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(savedReservation, HttpStatus.ACCEPTED);
 
     }
 
     @DeleteMapping("/reservation/user/{id}")
-    public ResponseEntity<Reservation> deleteReservation(@PathVariable("id") Integer reservationId, @RequestParam(required = false) String key) throws ReservationException, BusException, UserException {
+    public ResponseEntity<Reservation> deleteReservation(@PathVariable("id") Integer reservationId, @RequestParam(required = false) String key) throws ReservationException, UserException, com.masai.exceptions.BusException {
         Reservation deletedReservation = reservationService.deleteReservation(reservationId, key);
-        return new ResponseEntity<Reservation>(deletedReservation, HttpStatus.OK);
+        return new ResponseEntity<>(deletedReservation, HttpStatus.OK);
     }
 
     @GetMapping("/reservation/admin/{id}")
     public ResponseEntity<Reservation> viewReservation(@PathVariable("id") Integer reservationId, @RequestParam(required = false) String key) throws ReservationException, AdminException {
         Reservation foundReservation = reservationService.viewReservation(reservationId, key);
-        return new ResponseEntity<Reservation>(foundReservation, HttpStatus.OK);
+        return new ResponseEntity<>(foundReservation, HttpStatus.OK);
     }
 
 
     @GetMapping("/reservation/admin")
     public ResponseEntity<List<Reservation>> viewAllReservation(@RequestParam(required = false) String key) throws ReservationException {
         List<Reservation> reservationList = reservationService.viewAllReservation(key);
-        return new ResponseEntity<List<Reservation>>(reservationList, HttpStatus.OK);
+        return new ResponseEntity<>(reservationList, HttpStatus.OK);
     }
 
     @GetMapping("/reservation/user")
     public ResponseEntity<List<Reservation>> viewReservationByUser(@RequestParam(required = false) String key) throws ReservationException, UserException {
 
         List<Reservation> reservationList = reservationService.viewReservationByUser(key);
-        return new ResponseEntity<List<Reservation>>(reservationList, HttpStatus.OK);
+        return new ResponseEntity<>(reservationList, HttpStatus.OK);
     }
 }

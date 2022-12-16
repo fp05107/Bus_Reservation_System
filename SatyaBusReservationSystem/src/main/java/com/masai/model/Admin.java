@@ -32,7 +32,9 @@ public class Admin {
 
 	@NotNull(message = "Password cannot be null!")
 	@NotBlank(message = "Password cannot be blank!")
-	@Pattern(regexp = "[A-Za-z0-9!@#$%^&*_]{8,15}", message = "Password must be 8-15 characters in length and can include alphanumerics and special characters")
+	@Pattern(regexp = "[A-Za-z0-9!@#$%^&*_]{8,15}",
+	message = "Password must be 8-15 characters in length and can include"
+			+ " alphanumerics and special characters")
 	private String adminPassword;
 
 	@NotNull(message = "Mobile number cannot be null!")

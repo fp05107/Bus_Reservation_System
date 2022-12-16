@@ -1,13 +1,10 @@
 package com.masai.repository;
 
-import com.masai.model.Reservation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import com.masai.model.Route;
 @Repository
-public interface ReservationDAO extends JpaRepository<Reservation, Integer> {
-
-
+public interface RouteDAO extends JpaRepository<Route, Integer>{
 
 }
-
