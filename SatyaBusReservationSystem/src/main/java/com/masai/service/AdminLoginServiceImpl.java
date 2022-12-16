@@ -56,7 +56,7 @@ public class AdminLoginServiceImpl implements AdminLoginService{
 	@Override
 	public String logOutFromAdminAccount(String key) throws LoginException {
 
-		CurrentAdminSession validAdminSession = adminSessionDao.findByUuid(key);
+		CurrentAdminSession validAdminSession = adminSessionDao.findByAdminUID(key);
 
 		if (validAdminSession == null) {
 			throw new LoginException("Admin Not Logged In with this number");
