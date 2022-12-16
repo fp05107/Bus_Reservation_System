@@ -57,7 +57,7 @@ public class UserLoginServiceImpl implements UserLoginService{
 	@Override
 	public String logOutFromUserAccount(String key) throws LoginException {
 				
-		CurrentUserSession validUserSession = userSessionDao.findByUuid(key);
+		CurrentUserSession validUserSession = userSessionDao.findByUserUID(key);
 		
 		if(validUserSession == null) {
 			throw new LoginException("User Not Logged In with this number");
