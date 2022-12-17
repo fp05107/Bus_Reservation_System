@@ -1,5 +1,6 @@
 package com.masai.repository;
 
+import com.masai.model.Bus;
 import org.hibernate.metamodel.model.convert.spi.JpaAttributeConverter;
 import java.util.List;
 
