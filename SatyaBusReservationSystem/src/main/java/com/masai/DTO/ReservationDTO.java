@@ -31,5 +31,5 @@ public class ReservationDTO {
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     private LocalDate journeyDate;
 
-    private com.masai.dto.BusDTO busDTO;
+    private com.masai.DTO.BusDTO busDTO;
 }

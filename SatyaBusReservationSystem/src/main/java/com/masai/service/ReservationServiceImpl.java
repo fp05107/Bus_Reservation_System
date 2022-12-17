@@ -12,12 +12,12 @@ import java.util.List;
 public class ReservationServiceImpl implements ReservationService{
 
     @Override
-    public Reservation addReservation(ReservationDTO reservationDTO, String key) throws ReservationException, com.masai.exceptions.BusException, UserException {
+    public Reservation addReservation(ReservationDTO reservationDTO, String key) throws ReservationException, com.masai.exception.BusException, UserException {
         return null;
     }
 
     @Override
-    public Reservation deleteReservation(Integer reservationId, String key) throws ReservationException, com.masai.exceptions.BusException, UserException {
+    public Reservation deleteReservation(Integer reservationId, String key) throws ReservationException, com.masai.exception.BusException, UserException {
         return null;
     }
 
