@@ -22,34 +22,33 @@ public class ReservationController {
 
     @PostMapping("/reservation/user")
     public ResponseEntity<Reservation> addReservation(@Valid @RequestBody ReservationDTO reservationDTO, @RequestParam(required = false) String key) throws ReservationException, UserException, com.masai.exceptions.BusException {
-        Reservation savedReservation = reservationService.addReservation(reservationDTO, key);
-        return new ResponseEntity<>(savedReservation, HttpStatus.ACCEPTED);
+        Reservation addReservation = reservationService.addReservation(reservationDTO, key);
+        return new ResponseEntity<>(addReservation, HttpStatus.ACCEPTED);
 
     }
 
     @DeleteMapping("/reservation/user/{id}")
     public ResponseEntity<Reservation> deleteReservation(@PathVariable("id") Integer reservationId, @RequestParam(required = false) String key) throws ReservationException, UserException, com.masai.exceptions.BusException {
-        Reservation deletedReservation = reservationService.deleteReservation(reservationId, key);
-        return new ResponseEntity<>(deletedReservation, HttpStatus.OK);
+        Reservation deletReservation = reservationService.deleteReservation(reservationId, key);
+        return new ResponseEntity<>(deletReservation, HttpStatus.OK);
     }
 
     @GetMapping("/reservation/admin/{id}")
     public ResponseEntity<Reservation> viewReservation(@PathVariable("id") Integer reservationId, @RequestParam(required = false) String key) throws ReservationException, AdminException {
-        Reservation foundReservation = reservationService.viewReservation(reservationId, key);
-        return new ResponseEntity<>(foundReservation, HttpStatus.OK);
+        Reservation viewReservation = reservationService.viewReservation(reservationId, key);
+        return new ResponseEntity<>(viewReservation, HttpStatus.OK);
     }
-
 
     @GetMapping("/reservation/admin")
     public ResponseEntity<List<Reservation>> viewAllReservation(@RequestParam(required = false) String key) throws ReservationException {
-        List<Reservation> reservationList = reservationService.viewAllReservation(key);
-        return new ResponseEntity<>(reservationList, HttpStatus.OK);
+        List<Reservation> viewAllReservation = reservationService.viewAllReservation(key);
+        return new ResponseEntity<>(viewAllReservation, HttpStatus.OK);
     }
 
     @GetMapping("/reservation/user")
     public ResponseEntity<List<Reservation>> viewReservationByUser(@RequestParam(required = false) String key) throws ReservationException, UserException {
 
-        List<Reservation> reservationList = reservationService.viewReservationByUser(key);
-        return new ResponseEntity<>(reservationList, HttpStatus.OK);
+        List<Reservation> viewReservationByUser = reservationService.viewReservationByUser(key);
+        return new ResponseEntity<>(viewReservationByUser, HttpStatus.OK);
     }
 }

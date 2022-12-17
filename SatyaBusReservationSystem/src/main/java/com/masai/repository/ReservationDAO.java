@@ -7,7 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ReservationDAO extends JpaRepository<Reservation, Integer> {
 
-
-
 }
 

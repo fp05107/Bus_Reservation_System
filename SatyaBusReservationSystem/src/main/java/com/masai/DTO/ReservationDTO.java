@@ -15,8 +15,8 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class ReservationDTO {
 
-    @NotNull(message = "Start point cannot be null!")
-    @NotBlank(message = "Start point cannot be blank!")
+    @NotNull(message = "Starting point cannot be null!")
+    @NotBlank(message = "Starting point cannot be blank!")
     private String source;
 
     @NotNull(message = "Destination point cannot be null!")
