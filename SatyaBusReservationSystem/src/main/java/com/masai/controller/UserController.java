@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,6 +28,8 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
+	/***************** Save User ***************/
+	
 	@PostMapping("/users")
 	public ResponseEntity<User> saveUser(@Valid @RequestBody User user) throws UserException {
 
@@ -35,6 +38,8 @@ public class UserController {
 		return new ResponseEntity<User>(savedUser, HttpStatus.CREATED);
 	}
 
+	/***************** Update User ***************/
+	
 	@PutMapping("/users")
 	public ResponseEntity<User> updateUser(@Valid @RequestBody User user, @RequestParam(required = false) String key)
 			throws UserException {
@@ -45,6 +50,8 @@ public class UserController {
 
 	}
 
+	/***************** Delete User ***************/
+	
 	@DeleteMapping("/users/admin/{userId}")
 	public ResponseEntity<User> deleteUser(@PathVariable("userId") Integer userId,
 			@RequestParam(required = false) String key) throws UserException, AdminException {
@@ -54,6 +61,8 @@ public class UserController {
 		return new ResponseEntity<User>(deletedUser, HttpStatus.OK);
 
 	}
+	
+	/***************** View User By UserId ***************/
 
 	@GetMapping("/users/admin/{userId}")
 	public ResponseEntity<User> viewUser(@PathVariable("userId") Integer userId,
@@ -64,12 +73,15 @@ public class UserController {
 		return new ResponseEntity<User>(user, HttpStatus.OK);
 
 	}
-
+	
+	/***************** View All User ***************/
+	
+	@CrossOrigin
 	@GetMapping("/users/admin")
-	public ResponseEntity<List<User>> viewAllUser(@RequestParam(required = false) String key)
+	public ResponseEntity<List<User>> viewAllUser() //@RequestParam(required = false) String key
 			throws UserException, AdminException {
 
-		List<User> userList = userService.viewUsers(key);
+		List<User> userList = userService.viewUsers();
 
 		return new ResponseEntity<List<User>>(userList, HttpStatus.OK);
 

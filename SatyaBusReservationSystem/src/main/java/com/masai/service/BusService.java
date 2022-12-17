@@ -2,7 +2,8 @@ package com.masai.service;
 
 import java.util.List;
 
-import com.masai.exceptions.BusException;
+
+import com.masai.exception.BusException;
 import com.masai.exception.LoginException;
 import com.masai.model.Bus;
 

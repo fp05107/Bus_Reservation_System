@@ -20,6 +20,7 @@ public interface UserService {
 
 	public User viewUserById(Integer userId, String key) throws UserException, AdminException;
 
-	public List<User> viewUsers(String key) throws UserException, AdminException;
+	public List<User> viewUsers() throws UserException, AdminException;
 
+//	String key
 }
