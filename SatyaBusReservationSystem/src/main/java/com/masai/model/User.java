@@ -55,4 +55,6 @@ public class User {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 	private List<Reservation> reservations = new ArrayList<>();
 
+
+
 }

@@ -25,8 +25,8 @@ public class Feedback {
 	private Integer feedBackId;
 	private Integer driverRating;
 
-	@Min(value = 1, message = "Rating must be in range of 1-5")
-	@Max(value = 5, message = "Rating must be in range of 1-5")
+	@Min(value = 1, message = "Minimum Rating must be 1")
+	@Max(value = 5, message = "Maximum Rating must be 5")
 	private Integer serviceRating;
 
 	private Integer overallRating;
