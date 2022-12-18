@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -40,13 +41,13 @@ public class RouteController {
 
 //==========================================DELETE ROUTE BY ID=============================================================
 		@DeleteMapping("/Rout/{id}")
-		public ResponseEntity<Route> DeleteRoute(@RequestParam("id") Integer id){
+		public ResponseEntity<Route> DeleteRoute(@PathVariable("id") Integer id){
 			Route Rot=routeService.DeleteRoute(id);
 			return new ResponseEntity<Route>(Rot,HttpStatus.OK);
 		} 
 //===========================================GET ROUTE 	DETAILS BY ID======================================================
 		@GetMapping("/Route/{id}")
-		public ResponseEntity<Route> ViewRouteById(@RequestParam("id") Integer id){
+		public ResponseEntity<Route> ViewRouteById(@PathVariable("id") Integer id){
 			Route Rot=routeService.ViewRoute(id);
 			return new ResponseEntity<Route>(Rot,HttpStatus.OK);
 		}
