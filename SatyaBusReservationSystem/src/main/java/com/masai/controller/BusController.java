@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.masai.exceptions.BusException;
+import com.masai.exception.BusException;
 import com.masai.exception.LoginException;
 import com.masai.model.Bus;
 import com.masai.service.BusService;
