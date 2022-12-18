@@ -81,15 +81,13 @@ public class UserServiceImpl implements UserService {
 		return user;
 	}
 
-//	String key
 	@Override
-	public List<User> viewUsers() throws UserException, AdminException {
+	public List<User> viewUsers(String key) throws UserException, AdminException {
 
-//		CurrentAdminSession loggedInAdmin = adminSessionDao.findByAdminUID(key);
-//
-//		if (loggedInAdmin == null) {
-//			throw new AdminException("Please provide a valid key to view all users!");
-//		}
+		CurrentAdminSession loggedInAdmin = adminSessionDao.findByAdminUID(key);
+		if (loggedInAdmin == null) {
+			throw new AdminException("Please provide a valid key to view all users!");
+		}
 
 		List<User> userList = userDao.findAll();
 		if (userList.isEmpty())

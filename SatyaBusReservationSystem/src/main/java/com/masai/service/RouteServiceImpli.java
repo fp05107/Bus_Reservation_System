@@ -26,7 +26,7 @@ public class RouteServiceImpli implements RouteService{
 	public Route UpdateRoute(Route route) {
 		Optional<Route> R1=Routedao.findById(route.getRouteId());
 		if(R1.isPresent()) {
-			Route R2= Routedao.save(R1.get());
+			Route R2= Routedao.save(route);
 			return R2;
 		}
 		return null;

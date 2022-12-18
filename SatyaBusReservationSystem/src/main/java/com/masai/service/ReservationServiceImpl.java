@@ -33,7 +33,6 @@ public class ReservationServiceImpl implements ReservationService {
     private AdminSessionDao adminSessionDao;
 
     @Override
-<<<<<<< HEAD
     public Reservation addReservation(ReservationDTO reservationDTO, String key) throws ReservationException, UserException {
 
         CurrentUserSession loggedInUser = userSessionDao.findByUserUID(key);
@@ -98,7 +97,7 @@ public class ReservationServiceImpl implements ReservationService {
     }
 
     @Override
-    public Reservation deleteReservation(Integer reservationId, String key) throws ReservationException, com.masai.exceptions.BusException, UserException {
+    public Reservation deleteReservation(Integer reservationId, String key) throws ReservationException, com.masai.exception.BusException, UserException {
 
         CurrentUserSession loggedInUser = userSessionDao.findByUserUID(key);
 
@@ -147,17 +146,7 @@ public class ReservationServiceImpl implements ReservationService {
         } else {
             throw new UserException("User not found!");
         }
-=======
-    public Reservation addReservation(ReservationDTO reservationDTO, String key) throws ReservationException, com.masai.exception.BusException, UserException {
-        return null;
     }
-
-    @Override
-    public Reservation deleteReservation(Integer reservationId, String key) throws ReservationException, com.masai.exception.BusException, UserException {
-        return null;
->>>>>>> 25cacb8fae3c238a2d3a2be3cec1d788b5ca473e
-    }
-
     @Override
     public Reservation viewReservation(Integer reservationId, String key) throws ReservationException, AdminException {
         CurrentAdminSession loggedInAdmin = adminSessionDao.findByAdminUID(key);

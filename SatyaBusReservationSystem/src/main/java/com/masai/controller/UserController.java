@@ -78,10 +78,10 @@ public class UserController {
 	
 	@CrossOrigin
 	@GetMapping("/users/admin")
-	public ResponseEntity<List<User>> viewAllUser() //@RequestParam(required = false) String key
+	public ResponseEntity<List<User>> viewAllUser(@RequestParam(required = false) String key) 
 			throws UserException, AdminException {
 
-		List<User> userList = userService.viewUsers();
+		List<User> userList = userService.viewUsers(key);
 
 		return new ResponseEntity<List<User>>(userList, HttpStatus.OK);
 
