@@ -37,10 +37,10 @@
 ## Contributors
 
 * [@Subham Sahoo](https://github.com/fp05107)
-* [@Brajkishor Tomar](https://github.com/BKS2315)
-* [@Vinay Kumar](https://github.com/vinaykumar2n)
-* [@Pintu Kumar](https://github.com/pintu903)
-* [@Sudarshan Chavan](https://github.com/Sudarshan2530)
+* [@Ajay Kumar Yadav](https://github.com/Ajay11125)
+* [@Yatin Kumar](https://github.com/yatinkumar01)
+* [@Tanuj Pant](https://github.com/IInnffiinniittyy)
+* [@Ashish](https://github.com/Ashishmonga00)
 
 ## Installation & Run
 
